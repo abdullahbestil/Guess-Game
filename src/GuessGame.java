@@ -107,20 +107,27 @@ public class GuessGame extends javax.swing.JFrame {
     int resetGame = 0;
     int guessedNumber;
     ArrayList<Integer> previousTrials = new ArrayList<>();
-
+    int IntervalLenght = 300;
+    
+    //Reset function resets the game
+    public void resetGame(){
+        resetGame = 0;
+        tryButton.setText("Try!");
+        guessedNumberField.setText("");
+        answerLabel.setText("");
+        numberOfTrials = 0;
+        numberToGuess = rand.nextInt(IntervalLenght+1);
+        previousTrials.clear();
+    }
+    
+    //
+    
     //Button actions
     private void tryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tryButtonActionPerformed
 
         //If the user finds the correct answer and hits reset button, this part resets the game.
         if (resetGame == 1) {
-            resetGame = 0;
-            tryButton.setText("Try!");
-            guessedNumberField.setText("");
-            answerLabel.setText("");
-            numberOfTrials = 0;
-            numberToGuess = rand.nextInt(301);
-            previousTrials.clear();
-
+            resetGame();
         } else {
 
             //With this try-catch block we give a pop-up message to the user that s/he needs to enter a number.
